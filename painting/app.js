@@ -86,6 +86,14 @@ function handleMousemove(e) {
   }
 }
 
+function handleClickImage(e) {
+  const posX = e.offsetX;
+  const posY = e.offsetY;
+  if (currentMode === 'image') {
+    context.drawImage($image, posX, posY, 40, 40);
+  }
+}
+
 function handleClickDownload() {
   const url = canvas.toDataURL('image/png', 0.9);
   const $link = document.createElement('a');
@@ -105,6 +113,7 @@ function initCanvas() {
   canvas.addEventListener('mouseup', handleMouseup);
   canvas.addEventListener('mousedown', handleMousedown);
   canvas.addEventListener('mousemove', handleMousemove);
+  canvas.addEventListener('click', handleClickImage);
 }
 
 initCanvas();
